@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Claude Code local settings
+.claude/
+
+# Literature/LLM cache
+.cache/
+
+# Sessions (contain business/audit data — never publish)
+sessions/
+
+# Generated outputs (PDFs, large binaries)
+output/*.pdf
+*.pdf
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# mypy / pyright
+.mypy_cache/
+.dmypy.json
+.pytype/
+CLAUDE.md
+CLAUDE.md

@@ -1,0 +1,212 @@
+{
+  "_meta": {
+    "description": "Search vocabulary for each node in the No-Man causal graph. Used by src/literature.py to construct Semantic Scholar queries. This is metadata — not scientific record.",
+    "node_count": 28,
+    "last_updated": "2026-05-27",
+    "schema": {
+      "node_id": "Must match an id in knowledge/nodes.json",
+      "terms_en": "2-4 academic search terms in English. Use real academic vocabulary, not node ID strings.",
+      "terms_ja": "1-3 Japanese academic terms",
+      "domain_context": "List of context qualifiers always included in queries. Always includes 'regional bank' and '地方銀行' or 'chiho ginko'.",
+      "notes": "Usage notes for query construction; disambiguation guidance"
+    }
+  },
+  "vocabulary": [
+    {
+      "node_id": "bank_loan_volume",
+      "terms_en": ["bank lending", "credit supply", "loan growth", "bank credit"],
+      "terms_ja": ["銀行貸出", "信用供給", "貸出残高"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan banking"],
+      "notes": "Prefer 'bank lending' or 'credit supply' over 'loan volume'. In Japanese banking literature, 'bank credit channel' and 'credit crunch' are the most-cited terms for this mechanism. Avoid 'bank loans outstanding' (balance-sheet focus) when the causal mechanism is credit availability."
+    },
+    {
+      "node_id": "bank_capital_ratio",
+      "terms_en": ["bank capital adequacy", "capital ratio", "BIS ratio", "tier 1 capital"],
+      "terms_ja": ["自己資本比率", "BIS比率", "資本充実度"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan banking regulation"],
+      "notes": "Use 'bank capital adequacy ratio' in academic searches. 'Tier 1 capital ratio' is the Basel III variant. In Japanese banking crisis literature, 'capital crunch' and 'capital constraint' are the mechanism-level terms. The FSA domestic standard is 4%; BIS international standard is 8%."
+    },
+    {
+      "node_id": "bank_net_interest_margin",
+      "terms_en": ["net interest margin", "interest rate spread", "NIM", "interest income"],
+      "terms_ja": ["純利鞘", "預貸金利鞘", "利鞘"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank profitability"],
+      "notes": "NIM is the standard academic abbreviation. In Japanese regional banking literature, the related term '預貸金利鞘' (yotai kinri-zaya, deposit-loan spread) is commonly used. Under ZIRP/NIRP context, search for 'NIM compression' and 'low interest rate environment bank profitability'."
+    },
+    {
+      "node_id": "bank_npl_ratio",
+      "terms_en": ["non-performing loans", "NPL ratio", "bad loans", "bank loan quality"],
+      "terms_ja": ["不良債権比率", "不良債権", "要管理債権"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan banking crisis"],
+      "notes": "NPL is the universal academic abbreviation. In Japanese banking literature, '不良債権' (furyou saiken) is the standard term covering both risk-managed loans (要管理債権) and bankrupt/near-bankrupt categories. The 1990s-2000s banking crisis literature (Hoshi, Kashyap, Peek, Rosengren) uses 'problem loans' interchangeably. FSA classification is stricter than international Basel standards."
+    },
+    {
+      "node_id": "bank_fee_income",
+      "terms_en": ["non-interest income", "fee income", "commission income", "service fee revenue"],
+      "terms_ja": ["役務取引等収益", "非金利収益", "手数料収入"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank revenue diversification"],
+      "notes": "Use 'non-interest income' as the primary academic term. In Japanese banking context, 役務取引等収益 covers fund distribution (投資信託販売), insurance agency (保険代理), and settlement services. Search specifically for 'bank revenue diversification Japan' and 'relationship lending cross-selling' for mechanism papers."
+    },
+    {
+      "node_id": "bank_operating_cost_ratio",
+      "terms_en": ["overhead ratio", "cost-to-income ratio", "operational efficiency", "bank cost efficiency"],
+      "terms_ja": ["経費率", "OHR", "コスト効率"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank efficiency"],
+      "notes": "OHR (overhead ratio) and cost-to-income ratio are used interchangeably in academic literature. FSA uses OHR as a key sustainability indicator. Search for 'bank efficiency ratio Japan' and 'X-efficiency regional banks'. In Japanese context, high OHR is often associated with excessive branch networks in depopulating areas."
+    },
+    {
+      "node_id": "local_deposit_base",
+      "terms_en": ["deposit funding", "retail deposits", "deposit base", "bank funding structure"],
+      "terms_ja": ["預金残高", "預金基盤", "資金調達"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank funding"],
+      "notes": "In Japanese regional banking, 'deposit base' reflects both funding capacity and community financial engagement. Search for 'bank deposit stability', 'retail deposit outflows', and 'bank liquidity Japan'. The structural demographic link is best found under 'population ageing bank deposits Japan'."
+    },
+    {
+      "node_id": "bank_securities_portfolio",
+      "terms_en": ["securities portfolio", "government bond holdings", "JGB investment", "fixed income portfolio"],
+      "terms_ja": ["有価証券ポートフォリオ", "国債保有", "債券投資"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japanese government bonds", "duration risk"],
+      "notes": "JGB (Japanese Government Bond) is the dominant term in Bank of Japan and IMF papers. The Japanese term 国債 (kokuai) refers specifically to JGBs while 地方債 (chihosai) refers to local government bonds. Both are critical for Japanese regional banks. Under rate normalization context, search for 'bank duration risk Japan' and 'unrealized bond losses Japan banks'."
+    },
+    {
+      "node_id": "regional_sme_credit_access",
+      "terms_en": ["small business lending", "bank credit supply", "SME financing", "credit availability"],
+      "terms_ja": ["中小企業融資", "信用アクセス", "中小企業の借入"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan SME finance"],
+      "notes": "SME (small and medium enterprise) is standard in English. Japanese equivalents: 中小企業 (chusho kigyo). 'Credit access' and 'credit availability' are preferred over 'credit demand' when the research question concerns supply-side constraints. 'Credit rationing' literature is central. Tsuruta 2014 and Ogawa/Suzuki 1998 are key Japan-specific citations."
+    },
+    {
+      "node_id": "regional_employment",
+      "terms_en": ["regional employment", "labor market", "employment level", "job creation"],
+      "terms_ja": ["地域雇用", "労働市場", "雇用水準"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "regional economy Japan"],
+      "notes": "In regional banking impact papers, employment is typically the downstream welfare variable reached through credit → investment → employment chains. Search for 'bank credit regional employment Japan' and 'credit crunch employment Japan'. BoJ regional economic surveys (地域経済報告) are primary data sources."
+    },
+    {
+      "node_id": "regional_gdp",
+      "terms_en": ["regional GDP", "gross prefectural product", "local economic output", "regional growth"],
+      "terms_ja": ["地域GDP", "県内総生産", "地域経済成長"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan prefecture economy"],
+      "notes": "In Japan, the prefectural-level measure is '県内総生産' (ken-nai soso seisan, gross prefectural product). National accounts use 'GDP'; prefecture-level studies use 'GPP' or 'gross regional product'. Combine with 'bank credit' for mechanism papers: 'bank lending regional GDP Japan'."
+    },
+    {
+      "node_id": "regional_sme_investment",
+      "terms_en": ["SME capital investment", "fixed investment", "capital expenditure", "business investment"],
+      "terms_ja": ["中小企業設備投資", "設備投資", "資本支出"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan SME investment"],
+      "notes": "In Japanese literature, '設備投資' (setsubi toshi, equipment/facilities investment) is the standard term. 'Capital expenditure' and 'fixed investment' are used interchangeably in English academic papers. Ogawa & Suzuki 1998 and Tsuruta 2014 are the central Japan-specific citations for the credit → investment link."
+    },
+    {
+      "node_id": "regional_housing_market",
+      "terms_en": ["housing market", "residential investment", "real estate lending", "housing starts"],
+      "terms_ja": ["住宅市場", "不動産市場", "住宅着工"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan real estate"],
+      "notes": "In Japan, the housing starts (住宅着工戸数) data from MLIT is the primary proxy. 'Real estate lending' is more relevant than 'housing market' for the bank → housing channel. Under population decline context, add 'depopulation housing Japan' as a modifier. The collateral value channel is important: 'land prices Japan bank lending'."
+    },
+    {
+      "node_id": "local_government_fiscal_health",
+      "terms_en": ["municipal finance", "local government bonds", "prefectural fiscal", "local public finance"],
+      "terms_ja": ["地方財政", "地方債", "財政健全性"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan local government"],
+      "notes": "Japanese local government bonds are 地方債 (chiho-sai). The fiscal health metric in Japan is often measured by the 財政力指数 (fiscal capacity index) or 実質公債費比率 (actual debt service ratio). For the bank-local government nexus, search for 'regional bank local government bond Japan' and 'bank municipal bond holdings'."
+    },
+    {
+      "node_id": "main_bank_relationship_trust",
+      "terms_en": ["main bank relationship", "relationship banking", "delegated monitoring", "bank-borrower relationship"],
+      "terms_ja": ["メインバンク", "関係金融", "メインバンク制度"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan main bank system"],
+      "notes": "The 'main bank' concept is a Japan-specific institution extensively documented in Hoshi, Kashyap, Scharfstein (1990s). Search for 'main bank Japan', 'keiretsu bank', and 'delegated monitoring Japan'. In regional banking, 'relationship lending' and 'soft information lending' are the international equivalents. Uchida et al. 2008 is the key regional bank citation."
+    },
+    {
+      "node_id": "bank_branch_network",
+      "terms_en": ["bank branch network", "branch closure", "soft information", "physical bank presence"],
+      "terms_ja": ["支店ネットワーク", "支店閉鎖", "ソフト情報"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan branch banking"],
+      "notes": "The academic concept linking branches to lending quality is 'soft information' and 'relationship lending'. Search for 'bank branch relationship lending', 'geographic proximity bank SME', and 'branch closure credit access'. In Japanese context, search specifically for '支店閉鎖 中小企業 融資' or 'Japan branch reduction SME credit'."
+    },
+    {
+      "node_id": "regional_credit_market_competition",
+      "terms_en": ["banking competition", "credit market concentration", "market power banking", "bank market structure"],
+      "terms_ja": ["銀行競争", "信用市場集中度", "HHI銀行"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan banking concentration"],
+      "notes": "Market structure is typically measured by Herfindahl-Hirschman Index (HHI) or concentration ratios (CR3, CR5). The competition-stability tradeoff literature is relevant (Petersen & Rajan 1995 on competition and relationship lending). Ogura 2010 is the key Japan regional bank citation. Search for 'bank competition SME lending Japan' and 'regional bank market power'."
+    },
+    {
+      "node_id": "bank_governance_quality",
+      "terms_en": ["bank corporate governance", "board independence", "bank risk management governance", "internal control quality"],
+      "terms_ja": ["銀行ガバナンス", "コーポレートガバナンス", "取締役会独立性"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank governance reform"],
+      "notes": "Board independence is a key measurable proxy. FSA launched governance reform guidelines (コーポレートガバナンス・コード) post-2015. Search for 'bank board independence performance Japan', 'bank governance NPL Japan', and 'insider board Japanese bank'. IMF 2017 and Berger et al. 2005 are the international reference papers cited in seed_graph.json."
+    },
+    {
+      "node_id": "borrower_confidence",
+      "terms_en": ["business confidence", "SME investment sentiment", "business expectations", "corporate confidence"],
+      "terms_ja": ["企業景況感", "中小企業景況感", "業況判断"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Tankan survey Japan"],
+      "notes": "The primary empirical proxy is BoJ Tankan survey data (日銀短観), specifically the SME component. Search for 'Tankan business confidence Japan bank' and 'SME business sentiment bank relationship Japan'. Ogawa & Suzuki 1998 is the key citation for the credit-confidence-investment channel."
+    },
+    {
+      "node_id": "depositor_confidence",
+      "terms_en": ["depositor confidence", "bank run risk", "deposit withdrawal", "bank stability perception"],
+      "terms_ja": ["預金者の信頼", "取り付け騒ぎ", "預金流出"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan deposit insurance"],
+      "notes": "Bank run literature uses terms like 'bank run', 'deposit flight', 'panic withdrawal'. In Japan, the failure of Hogo and Tokuyo banks in the late 1990s provides empirical case studies. Japan introduced full deposit insurance in 1996 (expanded to full payoff guarantee post-1996 crisis). Search for 'Japan deposit insurance bank run', 'regional bank stability depositor', and 'bank reputation deposit outflow'."
+    },
+    {
+      "node_id": "regional_entrepreneur_activity",
+      "terms_en": ["entrepreneurial activity", "new firm formation", "startup activity", "business entry rate"],
+      "terms_ja": ["起業活動", "新規開業率", "創業活動"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan entrepreneurship"],
+      "notes": "New firm formation rate (新規開業率) is the standard empirical proxy in Japanese data (from the Ministry of Health, Labour and Welfare business statistics). Search for 'bank credit entrepreneurship Japan', 'credit availability startup formation', and 'regional bank new business Japan'. Ogura 2010 covers the competition-credit-entrepreneurship channel."
+    },
+    {
+      "node_id": "bank_reputation_regional",
+      "terms_en": ["bank reputation", "community bank trust", "institutional legitimacy", "bank standing"],
+      "terms_ja": ["銀行評判", "地域評判", "銀行の信頼性"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank reputation"],
+      "notes": "Bank reputation in regional contexts is often proxied by deposit market share, media sentiment, or survey-based trust indices. In the academic literature, 'bank reputation' is most studied in crisis contexts (bank failures, NPL disclosures). Search for 'bank reputation NPL disclosure', 'regional bank community trust Japan', and 'signaling bank distress reputation'. The E-045 speculative edge targets this node."
+    },
+    {
+      "node_id": "fsa_supervisory_scrutiny",
+      "terms_en": ["bank regulatory examination", "supervisory intensity", "FSA inspection", "administrative guidance"],
+      "terms_ja": ["金融庁検査", "監督審査", "行政指導"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Financial Services Agency Japan"],
+      "notes": "FSA (金融庁, Financial Services Agency) supervises regional banks in Japan. '行政指導' (gyosei shido, administrative guidance) is the informal supervisory channel unique to the Japanese regulatory system. Search for 'FSA bank examination Japan', 'bank supervisory pressure Japan', and 'moral suasion bank regulation Japan'. Watanabe 2007 is the key citation for supervisory-capital interaction."
+    },
+    {
+      "node_id": "bank_regulatory_capital_pressure",
+      "terms_en": ["regulatory capital pressure", "capital requirement enforcement", "supervisory capital guidance", "bank capital constraint"],
+      "terms_ja": ["規制資本圧力", "自己資本規制", "監督当局資本指導"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank supervision capital"],
+      "notes": "Distinguish 'regulatory capital pressure' (FSA-driven, mechanism) from 'capital ratio' (the bank's own metric). Search for 'supervisory pressure bank capital Japan', 'FSA prompt corrective action precautionary', and 'bank deleveraging supervisory pressure Japan'. Hoshi & Kashyap 2001 and Watanabe 2007 cover the supervisory-capital-lending transmission."
+    },
+    {
+      "node_id": "basel_compliance_burden",
+      "terms_en": ["Basel III compliance cost", "regulatory compliance burden", "prudential regulation cost", "bank compliance expenditure"],
+      "terms_ja": ["バーゼル規制遵守コスト", "規制負担", "バーゼルIII"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Basel III Japan implementation"],
+      "notes": "Basel III/IV implementation costs are disproportionately large for smaller regional banks. Search for 'Basel III compliance cost small bank', 'regulatory burden community bank', and 'proportionality banking regulation'. The BCBS 2019 evaluation and EBA compliance cost studies are referenced in seed_graph.json (E-018). In Japanese context, search for 'バーゼルIII 地域銀行 コスト' or 'Basel proportionality Japan regional bank'."
+    },
+    {
+      "node_id": "fsa_prompt_corrective_action_risk",
+      "terms_en": ["prompt corrective action", "bank early intervention", "PCA trigger", "capital adequacy enforcement"],
+      "terms_ja": ["早期是正措置", "PCA", "銀行介入"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan bank supervision PCA"],
+      "notes": "Japan's Prompt Corrective Action (早期是正措置) system was introduced in 1996-1998. PCA triggers are tied to capital ratio thresholds. Search for 'Japan prompt corrective action bank', 'PCA capital threshold bank lending', and 'bank failure prevention Japan supervision'. Hoshi & Kashyap 2001 provides historical context for PCA introduction. The anticipatory deleveraging mechanism is key."
+    },
+    {
+      "node_id": "regional_population_trend",
+      "terms_en": ["population decline", "demographic change", "depopulation", "rural population outmigration"],
+      "terms_ja": ["人口減少", "人口動態", "過疎化"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Japan depopulation"],
+      "notes": "Japan's demographic decline is one of the most acute globally. '過疎化' (kasoka, depopulation) specifically refers to rural outmigration. Search for 'Japan regional population decline bank', 'aging population regional bank Japan', and 'demographic decline local economy'. In banking contexts, combine with 'deposit base', 'SME survival', and 'loan demand decline'."
+    },
+    {
+      "node_id": "boj_policy_rate",
+      "terms_en": ["Bank of Japan policy rate", "monetary policy rate", "BoJ interest rate", "overnight call rate"],
+      "terms_ja": ["日本銀行政策金利", "金融政策金利", "無担保コール翌日物"],
+      "domain_context": ["regional bank", "chiho ginko", "地方銀行", "Bank of Japan monetary policy"],
+      "notes": "The policy rate instrument is the uncollateralized overnight call rate (無担保コール翌日物レート). Under ZIRP/NIRP (2010-2024), policy rate changes had limited NIM transmission. Since 2024, rate normalization is underway. Search for 'Bank of Japan interest rate regional bank profitability', 'BoJ rate normalization NIM', and 'ZIRP NIRP bank lending Japan'. The interest rate regime matters critically for sign interpretation."
+    }
+  ]
+}

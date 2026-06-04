@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "description": "12 canonical decision types for No-Man causal risk analysis. Each type maps a business decision to the primary node shocked and the sign of that shock.",
+  "decision_types": [
+    {
+      "id": "D01",
+      "name_en": "Increase lending volume to a target sector",
+      "name_ja": "特定セクターへの貸出増加",
+      "primary_node": "bank_loan_volume",
+      "shock_sign": "+",
+      "secondary_nodes": [],
+      "description_en": "The bank actively expands credit to a specific sector (e.g., real estate, manufacturing) by loosening underwriting standards or allocating more capital to that segment.",
+      "description_ja": "銀行が特定セクター（例：不動産、製造業）に対して審査基準を緩和するか、資本配分を増やすことで、積極的に信用を拡大する意思決定。",
+      "examples_japan": [
+        "地方銀行が地域の中小企業向け貸出目標を前年比15%増に設定し、信用審査基準を緩和",
+        "観光業復興を目的として、旅館・ホテル向け融資を優遇金利で積極展開"
+      ],
+      "typical_adverse_paths": [
+        "bank_loan_volume → bank_npl_ratio → bank_capital_ratio (deterioration)",
+        "bank_loan_volume → regional_credit_market_competition → bank_net_interest_margin"
+      ]
+    },
+    {
+      "id": "D02",
+      "name_en": "Reduce lending volume or tighten credit conditions",
+      "name_ja": "貸出削減または信用条件引き締め",
+      "primary_node": "bank_loan_volume",
+      "shock_sign": "-",
+      "secondary_nodes": [],
+      "description_en": "The bank contracts credit supply, raises borrowing standards, or exits a lending segment — reducing total loan volume.",
+      "description_ja": "銀行が信用供給を縮小し、借入基準を引き上げるか、特定の貸出セグメントから撤退することで、総貸出量を減少させる意思決定。",
+      "examples_japan": [
+        "不動産向け貸出ポートフォリオ集中リスク軽減のため、新規案件の審査を厳格化",
+        "自己資本比率改善を目的として、低収益・高リスク融資先との取引を段階的に縮小"
+      ],
+      "typical_adverse_paths": [
+        "bank_loan_volume(-) → regional_sme_credit_access(-) → regional_employment(-)",
+        "bank_loan_volume(-) → main_bank_relationship_trust(-) → depositor_confidence(-)"
+      ]
+    },
+    {
+      "id": "D03",
+      "name_en": "Branch closure or network downsizing",
+      "name_ja": "支店閉鎖またはネットワーク縮小",
+      "primary_node": "bank_branch_network",
+      "shock_sign": "-",
+      "secondary_nodes": [],
+      "description_en": "The bank closes one or more physical branches, reducing its geographic footprint and point-of-contact density in the region.",
+      "description_ja": "銀行が1つ以上の実店舗を閉鎖し、地域における物理的な事業拠点と対面接点の密度を低下させる意思決定。",
+      "examples_japan": [
+        "人口減少が進む中山間地域から採算性の低い支店を撤退、ATM拠点に転換",
+        "県庁所在地内の重複店舗を統廃合し、近隣2店舗を1か所に集約"
+      ],
+      "typical_adverse_paths": [
+        "bank_branch_network(-) → regional_sme_credit_access(-) → regional_entrepreneur_activity(-)",
+        "bank_branch_network(-) → main_bank_relationship_trust(-) → local_deposit_base(-)"
+      ]
+    },
+    {
+      "id": "D04",
+      "name_en": "Fee-based service expansion (non-interest income push)",
+      "name_ja": "手数料収益事業の拡大（非金利収入強化）",
+      "primary_node": "bank_fee_income",
+      "shock_sign": "+",
+      "secondary_nodes": ["bank_operating_cost_ratio"],
+      "description_en": "The bank invests in new fee-generating businesses (insurance, investment trusts, settlement services) to diversify away from interest income. Short-term operating costs rise before revenues materialize.",
+      "description_ja": "銀行が保険、投資信託、決済サービス等の手数料収益事業に投資し、金利収入への依存を分散させる意思決定。収益実現前に短期的な運営コストが上昇する。",
+      "examples_japan": [
+        "相続・資産承継コンサルティング部門を新設し、富裕層顧客向けのウェルスマネジメントサービスを開始",
+        "地域の中小企業向けにM&Aアドバイザリーおよびビジネスマッチングサービスを展開"
+      ],
+      "typical_adverse_paths": [
+        "bank_operating_cost_ratio(+) → bank_capital_ratio(-) → bank_loan_volume(-)",
+        "bank_fee_income(+) → fsa_supervisory_scrutiny(+) [if mis-selling risk arises]"
+      ]
+    },
+    {
+      "id": "D05",
+      "name_en": "Balance sheet restructuring (securities portfolio reallocation)",
+      "name_ja": "バランスシート再構築（有価証券ポートフォリオの組み替え）",
+      "primary_node": "bank_securities_portfolio",
+      "shock_sign": "+",
+      "secondary_nodes": ["bank_net_interest_margin"],
+      "description_en": "The bank reallocates its investment portfolio — e.g., shifting from JGBs to higher-yield riskier assets, or the reverse — changing the duration and risk profile of the securities book.",
+      "description_ja": "銀行が投資ポートフォリオを再構築する意思決定。例えば、国債から利回りの高いリスク資産へのシフト、またはその逆を行い、有価証券ブックのデュレーションとリスクプロファイルを変更する。",
+      "examples_japan": [
+        "超低金利環境下で収益改善を目的として、国債保有比率を削減し外国債券・株式への投資を拡大",
+        "金利上昇局面での含み損リスク軽減のため、長期国債を売却し短期債に組み替え"
+      ],
+      "typical_adverse_paths": [
+        "bank_securities_portfolio(+, risky) → bank_capital_ratio(-) [on unrealized losses]",
+        "bank_net_interest_margin change → bank_loan_volume → regional_sme_credit_access"
+      ]
+    },
+    {
+      "id": "D06",
+      "name_en": "Merger or acquisition (with another regional bank or shinkin)",
+      "name_ja": "合併・買収（他の地方銀行や信用金庫との統合）",
+      "primary_node": "bank_branch_network",
+      "shock_sign": "+",
+      "secondary_nodes": ["bank_operating_cost_ratio", "regional_credit_market_competition"],
+      "description_en": "The bank merges with or acquires another regional financial institution, consolidating branch networks, balance sheets, and customer relationships.",
+      "description_ja": "銀行が他の地域金融機関と合併または買収を行い、支店ネットワーク、貸借対照表、顧客関係を統合する意思決定。",
+      "examples_japan": [
+        "隣接県の地方銀行2行が経営統合し、持株会社形式でグループを形成",
+        "地方銀行が地域内信用金庫を吸収合併し、農業・中小企業向け融資基盤を強化"
+      ],
+      "typical_adverse_paths": [
+        "bank_branch_network(+) → regional_credit_market_competition(-) → regional_sme_credit_access(-) [if competition reduces]",
+        "bank_operating_cost_ratio(+, integration costs) → bank_capital_ratio(-)"
+      ]
+    },
+    {
+      "id": "D07",
+      "name_en": "Capital raise (equity issuance or subordinated debt)",
+      "name_ja": "資本増強（増資または劣後債発行）",
+      "primary_node": "bank_capital_ratio",
+      "shock_sign": "+",
+      "secondary_nodes": [],
+      "description_en": "The bank strengthens its capital base by issuing new equity, hybrid instruments, or subordinated debt — directly increasing the capital ratio.",
+      "description_ja": "銀行が新株発行、ハイブリッド証券、または劣後債を発行することで自己資本基盤を強化し、自己資本比率を直接引き上げる意思決定。",
+      "examples_japan": [
+        "国際統一基準行が規制強化に対応するため、公募増資により普通株式等Tier1比率を引き上げ",
+        "地銀がデジタル化投資の原資確保を目的として劣後ローンを調達"
+      ],
+      "typical_adverse_paths": [
+        "bank_capital_ratio(+, dilution signal) → bank_reputation_regional(-) → local_deposit_base(-)",
+        "bank_regulatory_capital_pressure(-) → fsa_supervisory_scrutiny(+) [if market reads as distress signal]"
+      ]
+    },
+    {
+      "id": "D08",
+      "name_en": "Dividend cut or suspension",
+      "name_ja": "配当削減または停止",
+      "primary_node": "bank_reputation_regional",
+      "shock_sign": "-",
+      "secondary_nodes": ["depositor_confidence"],
+      "description_en": "The bank reduces or suspends its dividend payment, which signals financial stress or capital preservation needs to the market and depositors.",
+      "description_ja": "銀行が配当支払いを削減または停止する意思決定。市場と預金者に対して財務ストレスまたは資本保全の必要性を示すシグナルとなる。",
+      "examples_japan": [
+        "不良債権増加への対応として自己資本比率維持のため期末配当を無配に変更",
+        "コロナ禍での業績悪化を受けて、株主配当を前年比50%削減し内部留保に充当"
+      ],
+      "typical_adverse_paths": [
+        "bank_reputation_regional(-) → main_bank_relationship_trust(-) → regional_sme_credit_access(-)",
+        "depositor_confidence(-) → local_deposit_base(-) → bank_loan_volume(-)"
+      ]
+    },
+    {
+      "id": "D09",
+      "name_en": "Interest rate pricing change (loan rate increase or decrease)",
+      "name_ja": "金利改定（貸出金利の引き上げまたは引き下げ）",
+      "primary_node": "bank_net_interest_margin",
+      "shock_sign": "+",
+      "secondary_nodes": [],
+      "description_en": "The bank revises the pricing on its loan book — raising or lowering lending rates — which directly affects its net interest margin and competitiveness.",
+      "description_ja": "銀行が貸出金利を改定する意思決定。純利鞘と競争力に直接影響を与える。",
+      "examples_japan": [
+        "日銀の利上げを受けて変動金利型住宅ローンの店頭金利を0.25%引き上げ",
+        "中小企業向け短期融資の基準金利を市場環境悪化を理由に0.5%引き上げ"
+      ],
+      "typical_adverse_paths": [
+        "bank_net_interest_margin(+) → regional_credit_market_competition(-) [if competitors do not follow] → regional_sme_credit_access(-)",
+        "bank_net_interest_margin(+, rate increase) → borrower_confidence(-) → regional_sme_investment(-)"
+      ]
+    },
+    {
+      "id": "D10",
+      "name_en": "Cost reduction program (headcount or IT rationalization)",
+      "name_ja": "コスト削減プログラム（人員削減またはIT合理化）",
+      "primary_node": "bank_operating_cost_ratio",
+      "shock_sign": "-",
+      "secondary_nodes": ["bank_branch_network"],
+      "description_en": "The bank implements a structural cost reduction — layoffs, early retirement programs, branch automation, or IT system rationalization — aimed at improving operating efficiency.",
+      "description_ja": "銀行が人員削減、早期退職優遇、店舗自動化、ITシステム合理化などの構造的コスト削減施策を実施し、業務効率改善を目指す意思決定。",
+      "examples_japan": [
+        "店頭業務のデジタル化推進とRPA導入により5年間で総従業員数を20%削減する中期計画を策定",
+        "本部機能を集約し、事務センターを他行との共同運営に切り替えることで固定費を圧縮"
+      ],
+      "typical_adverse_paths": [
+        "bank_branch_network(-) → main_bank_relationship_trust(-) → borrower_confidence(-)",
+        "bank_operating_cost_ratio(-) → bank_capital_ratio(+) → [positive, but] bank_reputation_regional(-) [if layoffs signal distress]"
+      ]
+    },
+    {
+      "id": "D11",
+      "name_en": "Exit from or entry into a specific geographic market",
+      "name_ja": "特定地域市場からの撤退または参入",
+      "primary_node": "regional_credit_market_competition",
+      "shock_sign": "-",
+      "secondary_nodes": ["bank_branch_network"],
+      "description_en": "The bank withdraws from or enters a new geographic area, changing competitive dynamics and relationship coverage in that market.",
+      "description_ja": "銀行が特定の地理的エリアから撤退するか新たに参入し、その市場における競争構造と関係カバレッジを変化させる意思決定。",
+      "examples_japan": [
+        "収益性低下を理由に隣接県における営業活動を縮小し、自県業務に特化する戦略へ転換",
+        "都市部への顧客層拡大を目指して東京に初の営業拠点を開設し、大手企業向け営業を開始"
+      ],
+      "typical_adverse_paths": [
+        "regional_credit_market_competition(-) → regional_sme_credit_access(-) → regional_employment(-)",
+        "bank_branch_network(-) → main_bank_relationship_trust(-) → local_deposit_base(-)"
+      ]
+    },
+    {
+      "id": "D12",
+      "name_en": "Governance or management change (CEO succession, board restructuring)",
+      "name_ja": "ガバナンス・経営体制の変更（CEO交代、取締役会再構築）",
+      "primary_node": "bank_governance_quality",
+      "shock_sign": "+",
+      "secondary_nodes": ["bank_reputation_regional"],
+      "description_en": "A significant change in senior leadership or board composition that alters strategic direction, risk appetite, or stakeholder relationships.",
+      "description_ja": "経営幹部または取締役会構成の大幅な変更により、戦略方向性、リスク選好度、またはステークホルダー関係が変化する意思決定。",
+      "examples_japan": [
+        "金融庁の経営改善要請を受けて、頭取を含む主要役員を刷新し外部人材を経営陣に登用",
+        "持株会社体制への移行に伴い、グループCEOを新設し傘下銀行の独立性を維持しつつ戦略統合を図る"
+      ],
+      "typical_adverse_paths": [
+        "bank_governance_quality(+, transition uncertainty) → bank_reputation_regional(-) [short-term uncertainty signal]",
+        "bank_governance_quality(+) → fsa_supervisory_scrutiny(-) [if improvement is recognized] — this is a positive chain, not adverse"
+      ]
+    }
+  ]
+}

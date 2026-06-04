@@ -1,0 +1,324 @@
+{
+  "version": "1.2",
+  "last_updated": "2026-05-30",
+  "description": "Voting and promotion rules for the No-Man causal knowledge base. Immutable except by project owner with changelog.md entry.",
+
+  "_changelog_note": "2026-05-30: Added confidence_tier_schema (5-tier epistemic quality system) and audit_fields schema. All existing tested edges migrate to tier 4 (human_verified); speculative edges to tier 1. Audit fields (proposed_at, basis, verified_by, verified_at) are optional and nullable. No promotion rules changed.",
+
+  "confidence_tier_schema": {
+    "description": "Five-tier numeric system for edge epistemic quality. Replaces the binary tested/speculative confidence classification. Chain confidence is computed as the minimum tier of any edge in the chain.",
+    "tiers": {
+      "1": {
+        "name": "speculative",
+        "description": "Edge proposed without supporting literature or data. Corresponds to the old 'speculative' status with no citation.",
+        "migration_from": "speculative"
+      },
+      "2": {
+        "name": "cross_national_analogy",
+        "description": "Edge supported by evidence from other countries or institutional contexts (e.g., US, European banking studies) but not directly validated for Japan.",
+        "migration_from": null
+      },
+      "3": {
+        "name": "literature_applied_japan",
+        "description": "Edge supported by academic literature directly applicable to Japan (BoJ, RIETI, Japanese banking studies) but not yet independently empirically verified.",
+        "migration_from": null
+      },
+      "4": {
+        "name": "human_verified",
+        "description": "Edge reviewed and confirmed by a domain expert with citation. Conservative default for all edges that passed the tested promotion process. Corresponds to the old 'tested' status.",
+        "migration_from": "tested"
+      },
+      "5": {
+        "name": "empirically_validated",
+        "description": "Edge backed by quantitative empirical test (Granger causality, regression, panel data) confirming the predicted sign with statistical significance in a Japan-relevant dataset.",
+        "migration_from": null
+      }
+    },
+    "field_name": "confidence_tier",
+    "field_type": "integer",
+    "valid_values": [1, 2, 3, 4, 5],
+    "optional": true,
+    "nullable": false,
+    "default_for_tested": 4,
+    "default_for_speculative": 1,
+    "chain_rule": "The confidence_tier of a chain is the minimum confidence_tier of any edge in the chain. No averaging. No majority rule."
+  },
+
+  "audit_fields_schema": {
+    "description": "Optional audit log fields on every edge. All fields are nullable. Existing edges without these fields remain valid.",
+    "fields": {
+      "proposed_by": {
+        "type": "string",
+        "nullable": false,
+        "required_for": ["speculative"],
+        "description": "ID or name of the LLM worker or human who proposed this edge. Already required for speculative edges by invariant 7.",
+        "already_exists": true
+      },
+      "proposed_at": {
+        "type": "string",
+        "format": "ISO 8601 timestamp",
+        "nullable": true,
+        "required": false,
+        "description": "Timestamp when this edge was first proposed."
+      },
+      "basis": {
+        "type": "string",
+        "nullable": true,
+        "required": false,
+        "accepted_values": ["intuition", "literature", "data"],
+        "description": "Basis for the edge proposal. Use paper DOI or URL when citing a specific paper.",
+        "examples": ["intuition", "literature", "data", "https://doi.org/10.xxxx/xxxxx"]
+      },
+      "verified_by": {
+        "type": "string",
+        "nullable": true,
+        "required": false,
+        "description": "Name or ID of the human who verified this edge. Null if not yet verified."
+      },
+      "verified_at": {
+        "type": "string",
+        "format": "ISO 8601 timestamp",
+        "nullable": true,
+        "required": false,
+        "description": "Timestamp when this edge was verified. Null if not yet verified."
+      }
+    }
+  },
+
+  "proposed_by_values": {
+    "description": "Exhaustive list of valid values for the proposed_by field on any edge in speculative_graph.json or seed_graph.json.",
+    "valid_values": [
+      "literature",
+      "worker",
+      "semantic_scholar_candidate"
+    ],
+    "descriptions": {
+      "literature": "Edge proposed based on review of academic literature during graph construction.",
+      "worker": "Edge proposed by a human worker or domain expert through the Socratic dialogue interface.",
+      "semantic_scholar_candidate": "Edge candidate identified by the automated Semantic Scholar citation search (src/literature.py). Requires human review and citation attachment before promotion; the search result alone does not satisfy governance.json §speculative_to_tested."
+    }
+  },
+
+  "automated_citation_lookup": {
+    "description": "Rules governing the automated literature search module src/literature.py and its interaction with the governance process.",
+    "allowed": true,
+    "requires_human_approval_before_promotion": true,
+    "tool": "src/literature.py",
+    "vocabulary_file": "knowledge/search_vocabulary.json",
+    "cache_location": ".cache/literature/",
+    "api_key_env_var": "SEMANTIC_SCHOLAR_API_KEY",
+    "unauthenticated_fallback": true,
+    "purpose": "Search Semantic Scholar for papers supporting or documenting speculative causal edges. Results are candidates for human review; they do not automatically satisfy the citation requirement for edge promotion.",
+    "what_this_does_not_do": [
+      "Automatically promote any edge from speculative to tested",
+      "Substitute for human review of a citation",
+      "Guarantee the sign or direction of a causal relationship",
+      "Override the requirements in §speculative_to_tested"
+    ],
+    "output_proposed_by_tag": "semantic_scholar_candidate",
+    "governance_boundary": "A semantic_scholar_candidate edge enters speculative_graph.json only after a human reviewer has read the candidate paper and confirmed it supports the edge sign. The automated search output alone does not satisfy requirement_1_academic_citation."
+  },
+
+  "promotion_rules": {
+
+    "proposed_to_speculative": {
+      "description": "An edge may be promoted from proposed to speculative if and only if the requirement below is satisfied. This transition is enforced automatically by feedback.py.",
+      "requirements": {
+        "adversarial_result_present": {
+          "mandatory": true,
+          "description": "The edge must have an adversarial_result field populated by run_adversarial_review(). This ensures every proposed edge has been stress-tested by a signed counterclaim before it enters the human review queue.",
+          "note": "The adversarial review does not need to find a contradicting paper. search_exhausted: true is a valid result. The requirement is that the review was attempted."
+        }
+      },
+      "auto": true,
+      "enforced_by": "feedback.py",
+      "next_state": "speculative"
+    },
+
+    "speculative_to_tested": {
+      "description": "An edge may be promoted from speculative to tested if and only if both requirements below are satisfied.",
+      "requirements": {
+        "requirement_1_academic_citation": {
+          "mandatory": true,
+          "minimum_count": 1,
+          "description": "At least one academic citation must be attached to the edge.",
+          "accepted_source_types": [
+            "peer_reviewed_journal_article",
+            "working_paper_boj",
+            "working_paper_rieti",
+            "working_paper_imf",
+            "working_paper_bis",
+            "working_paper_recognized_academic_institution"
+          ],
+          "explicitly_rejected_source_types": [
+            "human_opinion_without_citation",
+            "worker_vote_without_citation",
+            "blog_post",
+            "news_article",
+            "internal_report_without_academic_basis",
+            "anecdotal_evidence"
+          ],
+          "note": "Human opinion alone, regardless of seniority, does not satisfy this requirement. Worker votes without citations do not satisfy this requirement."
+        },
+        "requirement_2_empirical_validation": {
+          "mandatory": true,
+          "description": "At least one of the following empirical validation criteria must be met.",
+          "minimum_one_of": [
+            {
+              "type": "quantitative_test_result",
+              "description": "A quantitative test result is attached showing the predicted sign. Accepted methods: Granger causality test, correlation analysis, regression analysis, panel data estimation.",
+              "sign_must_match_predicted": true
+            },
+            {
+              "type": "second_independent_citation",
+              "description": "A second academic citation, independent of the first, confirms the same sign for the causal relationship."
+            }
+          ]
+        }
+      },
+      "prohibited_promotion_paths": [
+        "human_opinion_alone_regardless_of_seniority",
+        "worker_votes_without_citations"
+      ],
+      "automated_agent_may_promote": false,
+      "enforced_by": "feedback.py"
+    },
+
+    "speculative_to_rejected": {
+      "description": "A speculative edge is rejected if at least one of the following criteria is met.",
+      "criteria": {
+        "minimum_one_of": [
+          {
+            "type": "counter_argument_with_evidence",
+            "description": "A worker provides a specific counter-argument with supporting data or citation demonstrating why the edge relationship does not hold or holds with opposite sign."
+          },
+          {
+            "type": "quantitative_test_opposite_sign",
+            "description": "A quantitative test shows the opposite sign from what the edge predicts, with statistical significance."
+          }
+        ]
+      },
+      "on_rejection": {
+        "move_to": "knowledge/rejected_edges.json",
+        "store_full_record": true,
+        "fields_to_preserve": [
+          "original_edge_object",
+          "rejection_reason",
+          "rejecting_worker_or_test",
+          "rejection_date",
+          "evidence_cited"
+        ]
+      },
+      "automated_agent_may_reject": false,
+      "enforced_by": "feedback.py"
+    },
+
+    "rejected_to_speculative": {
+      "description": "A rejected edge may be re-proposed as speculative if new evidence contradicts the rejection reason.",
+      "requirements": {
+        "must_reference_original_rejection": true,
+        "must_explain_superseding_evidence": true,
+        "description": "The re-proposal must explicitly reference the original rejection record and explain why the new evidence supersedes the rejection reason."
+      },
+      "automated_agent_may_repropose": false,
+      "enforced_by": "feedback.py"
+    }
+
+  },
+
+  "demotion_rules": {
+    "description": "Rules governing backward movement in the confidence hierarchy (speculative → rejected, or flagging tested edges for re-review). Applies confidence_tier thresholds set in governance.json v1.2.",
+    "by_confidence_tier": {
+      "tier_1_to_3": {
+        "names": ["speculative", "cross_national_analogy", "literature_applied_japan"],
+        "auto_demotion_allowed": true,
+        "human_confirmation_required": false,
+        "description": "Edges with confidence_tier ≤ 3 may be demoted automatically by the LLM adversarial review or by flag_edge() accumulation (≥ 3 flags, 90-day rule). No human sign-off required.",
+        "enforced_by": "feedback.py"
+      },
+      "tier_4_to_5": {
+        "names": ["human_verified", "empirically_validated"],
+        "auto_demotion_allowed": false,
+        "human_confirmation_required": true,
+        "reason_required": true,
+        "description": "Edges with confidence_tier ≥ 4 require human confirmation for demotion. The reason must be recorded in knowledge/changelog.md. Automated agents may flag these edges (setting review_required: True) but may not demote them.",
+        "enforced_by": "feedback.py"
+      }
+    }
+  },
+
+  "seed_graph_governance": {
+    "description": "Rules governing changes to knowledge/seed_graph.json, which is the scientific record.",
+    "immutable_by_automated_agents": true,
+    "change_requirements": [
+      "Human review by domain expert",
+      "Data evidence or academic citation supporting the change",
+      "Quorum voting as defined in this governance.json",
+      "Corresponding entry in knowledge/changelog.md explaining what changed and why"
+    ],
+    "quorum_definition": {
+      "seed_graph_change": {
+        "requires_project_owner_approval": true,
+        "automated_agents_may_not_vote": true,
+        "minimum_human_reviewers": 1
+      }
+    },
+    "if_agent_believes_edge_is_wrong": "Add a flagging note to knowledge/changelog.md for human review. Do NOT edit seed_graph.json."
+  },
+
+  "immutability_rules": {
+    "knowledge/seed_graph.json": {
+      "immutable": true,
+      "exception": "Governed process requiring human review, data evidence, and quorum voting per this governance.json",
+      "automated_modification": "STRICTLY_PROHIBITED"
+    },
+    "knowledge/governance.json": {
+      "immutable": true,
+      "exception": "Project owner only; every change requires a comment in changelog.md signed by project owner",
+      "automated_modification": "STRICTLY_PROHIBITED"
+    },
+    "knowledge/rejected_edges.json": {
+      "policy": "APPEND_ONLY",
+      "deletion": "STRICTLY_PROHIBITED",
+      "reason": "Rejected edges form the permanent audit trail of knowledge decisions; they may be superseded but never erased"
+    },
+    "sessions/*/report_*.json": {
+      "immutable_after_generation": true,
+      "deletion": "STRICTLY_PROHIBITED",
+      "reason": "Session reports are the audit trail for governance, regulatory, and board reporting purposes"
+    }
+  },
+
+  "changelog_rules": {
+    "knowledge/changelog.md": {
+      "policy": "APPEND_ONLY",
+      "rewriting_history": "STRICTLY_PROHIBITED",
+      "required_for": [
+        "Any change to seed_graph.json",
+        "Any change to governance.json",
+        "Any change to nodes.json"
+      ],
+      "entry_must_include": [
+        "ISO date",
+        "Description of what changed",
+        "Reason for the change",
+        "Evidence or source supporting the change",
+        "Human reviewer or project owner signature"
+      ]
+    }
+  },
+
+  "what_the_system_does_not_do": {
+    "description": "Intentional design constraints that preserve epistemic humility and auditability. Never implement or suggest implementing the following.",
+    "prohibited": [
+      "Quantitative causal effect estimation (no OLS, BIC, VAR, GMM)",
+      "Probability estimates on adverse outcomes — sign only, never magnitude",
+      "Feedback loops in causal graph traversal — DAG only, no cycles",
+      "Mitigation evaluation beyond depth 1",
+      "Automated promotion of edges without citations",
+      "Any claim stronger than Rung 2 of Pearl's ladder — no counterfactuals",
+      "Autonomous modification of seed_graph.json",
+      "Deletion of any record from rejected_edges.json or session reports"
+    ]
+  }
+}

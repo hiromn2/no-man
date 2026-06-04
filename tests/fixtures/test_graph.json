@@ -1,0 +1,94 @@
+{
+  "edges": [
+    {
+      "id": "E-T01",
+      "from": "node_a",
+      "to": "node_b",
+      "sign": "+",
+      "status": "tested",
+      "confidence": "medium",
+      "monotone": true,
+      "monotone_note": null,
+      "regime": "normal",
+      "regime_condition": null,
+      "regime_flip": null,
+      "research_gap": false,
+      "research_gap_note": null,
+      "international_evidence": [],
+      "sources": [
+        "Test Source 2024"
+      ],
+      "local_weight_note": null,
+      "name_en": "Node A → Node B",
+      "name_ja": "ノードA → ノードB",
+      "proposed_by": "literature",
+      "confirmed_by": [],
+      "rejected_by": [],
+      "cycle_risk": false,
+      "cycle_risk_note": null,
+      "last_updated": "2025-01-15",
+      "confidence_tier": 4
+    },
+    {
+      "id": "E-T02",
+      "from": "node_b",
+      "to": "node_c",
+      "sign": "-",
+      "status": "tested",
+      "confidence": "high",
+      "monotone": true,
+      "monotone_note": null,
+      "regime": "normal",
+      "regime_condition": null,
+      "regime_flip": null,
+      "research_gap": false,
+      "research_gap_note": null,
+      "international_evidence": [],
+      "sources": [
+        "Another Source 2023",
+        "Third Source 2022"
+      ],
+      "local_weight_note": null,
+      "name_en": "Node B → Node C",
+      "name_ja": "ノードB → ノードC",
+      "proposed_by": "literature",
+      "confirmed_by": [],
+      "rejected_by": [],
+      "cycle_risk": false,
+      "cycle_risk_note": null,
+      "last_updated": "2025-01-15",
+      "confidence_tier": 4
+    },
+    {
+      "id": "E-T03",
+      "from": "node_c",
+      "to": "node_d",
+      "sign": "ambiguous",
+      "status": "tested",
+      "confidence": "low",
+      "monotone": false,
+      "monotone_note": "Sign depends on magnitude of shock",
+      "regime": "normal",
+      "regime_condition": null,
+      "regime_flip": null,
+      "research_gap": true,
+      "research_gap_note": "Relationship is understudied; direction unclear from available evidence",
+      "international_evidence": [
+        "International Study 2020"
+      ],
+      "sources": [
+        "Weak Source 2021"
+      ],
+      "local_weight_note": "Effect may vary by prefecture type",
+      "name_en": "Node C → Node D",
+      "name_ja": "ノードC → ノードD",
+      "proposed_by": "literature",
+      "confirmed_by": [],
+      "rejected_by": [],
+      "cycle_risk": false,
+      "cycle_risk_note": null,
+      "last_updated": "2025-01-15",
+      "confidence_tier": 4
+    }
+  ]
+}

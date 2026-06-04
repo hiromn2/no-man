@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "node_a",
+      "name_en": "Node A",
+      "name_ja": "ノードA",
+      "category": "financial",
+      "welfare_relevant": false,
+      "description_en": "Test node A — financial category",
+      "description_ja": "テストノードA — 金融カテゴリ"
+    },
+    {
+      "id": "node_b",
+      "name_en": "Node B",
+      "name_ja": "ノードB",
+      "category": "real_economy",
+      "welfare_relevant": true,
+      "description_en": "Test node B — real economy category, welfare relevant",
+      "description_ja": "テストノードB — 実体経済カテゴリ、厚生関連"
+    },
+    {
+      "id": "node_c",
+      "name_en": "Node C",
+      "name_ja": "ノードC",
+      "category": "macro",
+      "welfare_relevant": false,
+      "description_en": "Test node C — macro category",
+      "description_ja": "テストノードC — マクロカテゴリ"
+    },
+    {
+      "id": "node_d",
+      "name_en": "Node D",
+      "name_ja": "ノードD",
+      "category": "behavioral",
+      "welfare_relevant": false,
+      "description_en": "Test node D — behavioral category",
+      "description_ja": "テストノードD — 行動カテゴリ"
+    }
+  ]
+}

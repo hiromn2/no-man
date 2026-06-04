@@ -1,0 +1,362 @@
+{
+  "metadata": {
+    "description": "Speculative causal edges for the No-Man system. These edges have been proposed but not yet validated through the governed promotion process. See knowledge/governance.json for promotion rules.",
+    "edge_count": 1,
+    "created": "2026-05-26",
+    "note": "Edges here are included in traversal only when the session requests speculative edges. All chains containing speculative edges are capped at confidence tier 'worth-considering'."
+  },
+  "edges": [
+    {
+      "id": "E-045",
+      "from": "bank_capital_ratio",
+      "to": "bank_reputation_regional",
+      "sign": "-",
+      "status": "speculative",
+      "confidence": "low",
+      "monotone": false,
+      "monotone_note": "The relationship between capital ratio and regional reputation is not monotone. Under normal conditions, a high capital ratio signals financial strength and should positively affect reputation. However, when capital ratio is raised through emergency equity issuance or FSA-mandated capital restoration plans, the market may interpret the capital action as a distress signal and reputation can suffer in the short term. This edge captures the adverse distress-signaling channel only; the beneficial channel is not separately represented.",
+      "regime": "capital_stress",
+      "regime_condition": "Adverse sign applies when capital ratio improvement is driven by emergency equity issuance, subordinated debt under regulatory pressure, or FSA-mandated capital restoration plans — not when capital grows organically through retained earnings.",
+      "regime_flip": "Under organic capital accumulation through retained earnings, the effect of a higher capital ratio on regional reputation is likely positive. The negative sign in this edge applies specifically to the distress-signaling scenario.",
+      "research_gap": true,
+      "research_gap_note": "Japan-specific quantitative evidence on capital raise signaling effects for regional banks is limited. The adverse reputation effect is inferred from US banking studies and general signaling theory. Japanese regional banks may exhibit different dynamics given FSA moral suasion norms and the community trust dimension of depositor relationships. Suggested test: event study of regional bank equity issuance announcements and subsequent deposit flows or regional depositor confidence surveys.",
+      "international_evidence": [
+        "Slovin et al. 1992 (bank capital raises and market reaction, US)"
+      ],
+      "sources": [
+        "Slovin et al. 1992"
+      ],
+      "local_weight_note": "In Japanese regional communities, equity issuance by a local bank — especially under visible FSA pressure — can trigger deposit anxiety among community depositors who interpret capital actions as signs of financial difficulty. The community-embedded nature of regional banks amplifies this signaling channel relative to major banks.",
+      "name_en": "Bank capital adequacy ratio → Bank regional reputation",
+      "name_ja": "銀行自己資本比率 → 銀行の地域評判",
+      "proposed_by": "literature",
+      "confirmed_by": [],
+      "rejected_by": [],
+      "cycle_risk": false,
+      "cycle_risk_note": null,
+      "last_updated": "2026-05-26",
+      "tier": "literature_gap",
+      "literature_review": {
+        "papers_tried": [
+          {
+            "verdict": "CONTRADICTS",
+            "justification": "The paper finds that capital adequacy ratio (CAR) negatively moderates the relationship between NPLs and bank growth, but does not examine or provide evidence about bank regional reputation as an outcome variable.",
+            "paper": {
+              "paperId": "4471fe7dccde9f65a06f9a597676ecb79c747ed3",
+              "externalIds": {
+                "DOI": "10.3390/ijfs13030165",
+                "CorpusId": 281185708
+              },
+              "title": "The Impact of Non-Performing Loans on Bank Growth: The Moderating Roles of Bank Size and Capital Adequacy Ratio—Evidence from U.S. Banks",
+              "year": 2025,
+              "citationCount": 9,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/ijfs13030165?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/ijfs13030165, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2221349925",
+                  "name": "Richard Arhinful"
+                },
+                {
+                  "authorId": "2221345073",
+                  "name": "Leviticus Mensah"
+                },
+                {
+                  "authorId": "1661096488",
+                  "name": "B. Gyamfi"
+                },
+                {
+                  "authorId": "2294274171",
+                  "name": "H. Obeng"
+                }
+              ],
+              "abstract": "Banks in the United States face persistent challenges from non-performing loans (NPLs), despite conducting thorough client evaluations before issuing loans. To mitigate the impact of NPLs and support both local and global growth, banks must adopt effective risk management strategies. This study investigates the effect of NPLs on bank growth and the moderating of bank size and Capital Adequacy Ratio (CAR) through the lens of the Resource-Based View (RBV) theory. A sample of 253 banks listed on the New York Stock Exchange from 2006 to 2023 was selected using specific inclusion criteria from the Thomson Reuters Eikon DataStream. To address cross-sectional dependence and endogeneity, advanced estimation techniques—Feasible Generalized Least Squares (FGLS), Driscoll and Kraay standard errors, and the Generalized Method of Moments (GMM)—were employed. The results show that NPLs have a significant negative impact on banks’ asset and income growth. Furthermore, bank size and capital adequacy ratio (CAR) negatively and significantly moderate this relationship. These findings underscore the need for banks to enhance credit risk management by strengthening loan approval processes and leveraging advanced analytics to assess borrower risk more accurately."
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper examines relationships between financial inclusion and bank stability (measured via capital buffer and capital adequacy ratio), but does not investigate or report findings about the effect of capital adequacy ratio on bank regional reputation.",
+            "paper": {
+              "paperId": "ad8177f12e897d909fabe4a95fcac12d8edc7bb7",
+              "externalIds": {
+                "DOI": "10.1108/jcefts-05-2024-0035",
+                "CorpusId": 275398179
+              },
+              "title": "Financial inclusion and bank stability: evidence from capital buffer and capital adequacy ratio",
+              "year": 2025,
+              "citationCount": 6,
+              "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1108/jcefts-05-2024-0035?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1108/jcefts-05-2024-0035, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "113773639",
+                  "name": "Peterson K. Ozili"
+                }
+              ],
+              "abstract": "\nPurpose\nThis study aims to examine the effect of financial inclusion on bank stability, and the effect of bank stability on financial inclusion from 2011 to 2020.\n\n\nDesign/methodology/approach\nThis study analyses 33 countries which are divided into Asian countries, African countries, European countries and countries in the region of the Americas and using the panel regression method.\n\n\nFindings\nThe analysis for the impact of financial inclusion on bank stability shows that high levels of financial inclusion have a significant positive impact on bank stability. The regional results show that financial inclusion improves bank stability in African countries and in countries in the region of the Americas while financial inclusion impairs bank stability in European countries. The analysis for the impact of bank stability on financial inclusion shows that bank stability has a significant effect on financial inclusion. The regional analysis shows that greater bank stability decreases financial inclusion in European and African countries while greater bank stability increases financial inclusion in countries in the Americas region. The results suggest that the effect of financial inclusion on bank stability, and the effect of bank stability on financial inclusion, depends on how financial inclusion and bank stability are measured and the region examined.\n\n\nOriginality/value\nExisting studies have not examined the effect of financial inclusion on capital-based measures of bank stability and have not examined the effect of capital-based measures of bank stability on the level of financial inclusion.\n"
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper examines the effect of Capital Adequacy Ratio on Financial Sustainability Ratio, not on Bank regional reputation.",
+            "paper": {
+              "paperId": "e228687a959673ee9c2f15d4765e47e5c661239a",
+              "externalIds": {
+                "DOI": "10.32734/jomas.v4i3.17458",
+                "CorpusId": 272981103
+              },
+              "title": "The Influence of Capital Adequacy Ratio (CAR), Non-Performing Loans (NPL), Return on Assets (ROA), and Loan To Deposit Ratio (LDR) on Financial Sustainability in Regionally Owned Enterprises (BUMD) Bank Pasar Kulon Progo for the 2018-2023 Period",
+              "year": 2024,
+              "citationCount": 2,
+              "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.32734/jomas.v4i3.17458?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.32734/jomas.v4i3.17458, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2323471267",
+                  "name": "Eva Farida Kristin Wijayanti"
+                },
+                {
+                  "authorId": "2239545499",
+                  "name": "Bangun Putra Prasetya"
+                }
+              ],
+              "abstract": "Bank Pasar Kulon Progo plays a key role in promoting regional economic growthand improving welfare. To maintain financial stability, it is essential to assessfactors influencing financial sustainability. This study examines the impact ofCapital Adequacy Ratio (CAR), Non-Performing Loans (NPL), Return on Assets(ROA), and Loan to Deposit Ratio (LDR) on the Financial Sustainability Ratio(FSR) of Bank Pasar Kulon Progo from 2018 to 2023. A quantitative approachwas used, analyzing financial report data with purposive sampling. Multiplelinear regression was applied to assess the relationships between the variables.The results show that CAR, NPL, ROA, and LDR have a significant impact onFSR, collectively explaining 79.5% of its variation (R² = 0.795). The remaining20.5% is influenced by other factors outside the model. These findings suggestthat effective management of CAR, NPL, ROA, and LDR is crucial for ensuringthe financial sustainability of Bank Pasar Kulon Progo."
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper examines the relationship between CAR and Indonesia's economic growth, not the effect of CAR on Bank regional reputation.",
+            "paper": {
+              "paperId": "5de1acb9a5268ca9cba4e6bce4f025bd98c4688f",
+              "externalIds": {
+                "DOI": "10.26480/seps.02.2024.86.91",
+                "CorpusId": 276849846
+              },
+              "title": "THE ROLE OF CREDIT INTEREST RATES, CAPITAL ADEQUACY RATIO (CAR) AND LOAN TO DEPOSIT RATIO (LDR) AS CONTRIBUTORS TO INDONESIA'S ECONOMIC GROWTH - CASE STUDY: REGIONAL DEVELOPMENT BANK (BPD), WEST KALIMANTAN, INDONESIA",
+              "year": 2024,
+              "citationCount": 1,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.26480/seps.02.2024.86.91?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.26480/seps.02.2024.86.91, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2344345928",
+                  "name": "Supriaman"
+                },
+                {
+                  "authorId": "2344346385",
+                  "name": "Ariefanda Iqbal Perdhana"
+                },
+                {
+                  "authorId": "118850438",
+                  "name": "Hasanudin"
+                }
+              ],
+              "abstract": "Controlling the banking monetary in such a way needs to be done so that the dynamic of real sector growth develops in the expected way. This study is intended to analyze the role of credit interest rate instruments, development of capital adequacy ratio (CAR), and loan-to-deposit ratio (LDR) in Indonesian economic growth in the last ten years. By using multiple linear stepwise regression analyzing method approach, a very significant role simultaneously and partially from credit interest rate instrument and development of CAR push the Indonesian economics growth in a long term were found. When the average lending rate decreases and CAR increases, economic growth in the long run will increase. Meanwhile, LDR development has no significant influence on Indonesia’s long-term economic growth."
+            }
+          },
+          {
+            "verdict": "CONTRADICTS",
+            "justification": "The paper finds that increased CAR leads to higher ROA (profitability), not a negative effect, and measures bank performance through profitability rather than regional reputation, making the relationship directionally opposite to the claim.",
+            "paper": {
+              "paperId": "253aa51415507c88f1d99c7322515d0354cf48a5",
+              "externalIds": {
+                "DOI": "10.69714/v7wsgr62",
+                "CorpusId": 279944903
+              },
+              "title": "Non-Performing Loan, Loan to Deposit Ratio, Capital Adequacy Ratio dan Profitabilitas Bank: Peran Moderasi Ukuran Bank",
+              "year": 2024,
+              "citationCount": 3,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.69714/v7wsgr62?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.69714/v7wsgr62, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2370409643",
+                  "name": "Agung Prayogi"
+                }
+              ],
+              "abstract": "Bank profitability is a signal sent to bank stakeholders about bank performance over a certain period in the form of ratio, one of which is ROA. This research aims to find out the influence of NPL, LDR, CAR and the size of the bank on ROA. In addition, to know bank size as a moderation in the impact of the NPL, LDR and CAR on the ROA, the design of the research uses a quantitative approach. The research population is the entire Regional Development Bank in Indonesia of 31 banks. The samples were taken using purposive sampling, which produced 24 banks as samples. Data analysis techniques use double linear regression and Moderated Regression Analysis. The findings of this study explain that increased NPL ratio and bank size lead to lower ROA, increased LDR and CAR lead to higher ROA and the size of banks moderate the influence of NPL, LDR, and CAR on ROA. These results have implications for the Regional Development Bank in Indonesia to manage the risk profile, capitalization, and size of the bank as they affect ROAs. Moreover, stakeholders should also consider these factors when evaluating bank performance before investing."
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper examines the relationship between Capital Adequacy Ratio and Bank Risk-Taking (measured by NPL), not Bank regional reputation, making it irrelevant to the claim about CAR negatively affecting regional reputation.",
+            "paper": {
+              "paperId": "7d73716844b454a7836b729afebc440964c4a5c2",
+              "externalIds": {
+                "DOI": "10.30598/baileofisipvol2iss3pp334-349",
+                "CorpusId": 278736806
+              },
+              "title": "Determinants of Bank Risk-Taking: The Role of Capital Adequacy Ratio, Return on Equity to Total Assets, and Loan to Deposit Ratio in The Indonesian Banking Sector",
+              "year": 2025,
+              "citationCount": 4,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.30598/baileofisipvol2iss3pp334-349?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.30598/baileofisipvol2iss3pp334-349, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2362280269",
+                  "name": "Angkut Angkut"
+                },
+                {
+                  "authorId": "1687111405",
+                  "name": "Fadhil Yamaly"
+                },
+                {
+                  "authorId": "2092712019",
+                  "name": "Mister Candera"
+                }
+              ],
+              "abstract": "This study aims to analyze the factors that determine the level of banking risk-taking in Indonesia, focusing on the role of the Capital Adequacy Ratio (CAR), Return on Equity to Total Assets (RETTA), and Loan to Deposit Ratio (LDR). The study employs a multiple linear regression method to examine the influence of independent variables on Bank Risk Taking, measured using Non-Performing Loans (NPL). The data used in this research come from the banking sector in Indonesia, applying a quantitative approach. The findings indicate that CAR has a positive and significant impact on Bank Risk Taking, with a regression coefficient of 3.021. This suggests that an increase in CAR tends to raise NPL, implying that banks with stronger capital tend to take higher risks. Furthermore, RETTA also has a positive and significant effect on Bank Risk Taking, with a regression coefficient of 0.531, meaning that an increase in RETTA contributes to higher NPL. Conversely, LDR has a negative and significant impact on Bank Risk Taking, with a regression coefficient of -0.020, indicating that an increase in LDR can reduce NPL. The novelty of this study lies in the simultaneous analysis of three key indicators influencing bank risk-taking, providing a comprehensive perspective on the relationship between capital structure, profitability, and liquidity in Indonesia’s banking sector. These findings have implications for the development of social sciences and humanities, particularly in economics and financial management, by highlighting the importance of banking risk management policies. Recommendations include strengthening regulations and supervision over CAR and RETTA to control higher risk exposure, as well as optimizing LDR to maintain financial stability in Indonesia’s banking sector."
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper examines the effect of CAR on Return on Assets (ROA) as a measure of financial performance, not on \"Bank regional reputation,\" making it unrelated to the specific claim about CAR negatively affecting regional reputation.",
+            "paper": {
+              "paperId": "64c8cc154a33c7c63e192d0917b2f976be48ce2b",
+              "externalIds": {
+                "DOI": "10.37479/jeej.v7i3.29493",
+                "CorpusId": 279932811
+              },
+              "title": "Pengaruh Capital Adequacy Ratio (CAR), Non Performing Loan (NPL), Loan to Deposit Ratio (LDR) dan Net Interest Margin (NIM) Terhadap Return on Asset (ROA) (Studi Kasus Pada Bank Umum yang Listed di Bursa Efek Indonesia Tahun 2019-2023)",
+              "year": 2025,
+              "citationCount": 2,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.37479/jeej.v7i3.29493?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.37479/jeej.v7i3.29493, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2434718557",
+                  "name": "Dhea Ayu Recita Dwi Putri. A"
+                },
+                {
+                  "authorId": "92399588",
+                  "name": "C. Bella"
+                }
+              ],
+              "abstract": "The objective of this study is to evaluate the extent to which the Capital Adequacy Ratio (CAR), Non-Performing Loan (NPL), Loan to Deposit Ratio (LDR), and Net Interest Margin (NIM) influence the financial performance of commercial banks, particularly Return on Assets (ROA), among banks listed on the Indonesia Stock Exchange (IDX) from 2019 to 2023. The researchers employed a quantitative approach, utilizing EViews 12 software for data analysis. Using the purposive sampling technique, 13 bank samples were selected based on specific criteria. Among the four variables examined, CAR and NIM were found to have a statistically positive impact on ROA, as revealed by the study. In contrast, NPL and LDR did not significantly affect bank profitability as measured by ROA. Thus, the analysis suggests that strengthening capital adequacy and optimizing interest income efficiency play a more substantial role in enhancing bank financial performance compared to credit risk (NPL) and liquidity management (LDR)."
+            }
+          },
+          {
+            "verdict": "CONTRADICTS",
+            "justification": "The paper finds that KPMM (Capital Adequacy Ratio) has a significant **positive** effect on ROA (profitability), not a negative effect on bank regional reputation, directly contradicting the claim that capital adequacy ratio negatively affects bank regional reputation.",
+            "paper": {
+              "paperId": "998d08627f710b4d9aa3c68f5f58b940e0182aec",
+              "externalIds": {
+                "DOI": "10.59086/jam.v4i1.661",
+                "CorpusId": 287933972
+              },
+              "title": "Operational Efficiency, Capital Adequacy, and Profitability: A Case Study of Central Java’s Regional Development Bank",
+              "year": 2025,
+              "citationCount": 5,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.59086/jam.v4i1.661?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.59086/jam.v4i1.661, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "95954404",
+                  "name": "B. Jatmiko"
+                }
+              ],
+              "abstract": "This study aims to analyse the impact of BOPO (Operational Efficiency Ratio), LDR (Loan to Deposit Ratio), NPL (Non-Performing Loans), and KPMM (Capital Adequacy Ratio) on ROA (Return on Assets) in the Regional Development Bank of Central Java Province. Utilizing quarterly data published by the Financial Services Authority (OJK) from Q1 2017 to Q4 2024, the study employs a multiple regression approach to assess the relationships among variables. The empirical findings reveal that both BOPO and LDR exert a significant negative effect on ROA, indicating that higher operational inefficiencies and excessive lending relative to deposits diminish bank profitability. In contrast, KPMM shows a significant positive impact, suggesting that stronger capital adequacy enhances financial performance. NPL, however, is found to have no statistically significant effect on ROA. These results underline the importance of prudent cost management, balanced liquidity strategies, and robust capital buffers in improving bank profitability. The study recommends that policymakers strengthen regulations to enhance capital adequacy and promote operational efficiency, which in turn supports the resilience and growth of regional banking institutions. These insights contribute to the formulation of more effective economic policies in the regional banking sector, fostering financial stability and regional economic development."
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper focuses on measuring financial health through Capital Adequacy Ratio trends over time, but does not examine or provide empirical evidence regarding the relationship between CAR and regional reputation.",
+            "paper": {
+              "paperId": "b6abbb953879b0ca5c608e5aa7d1281e9e71042e",
+              "externalIds": {
+                "DOI": "10.48175/ijarsct-28459",
+                "CorpusId": 280064041
+              },
+              "title": "Capital Adequacy Ratio as a Measure of Financial Health: An Empirical Study of Assam Gramin Vikash Bank",
+              "year": 2025,
+              "citationCount": 0,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.48175/ijarsct-28459?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.48175/ijarsct-28459, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2372464036",
+                  "name": "Upama Kalita"
+                },
+                {
+                  "authorId": "2372467475",
+                  "name": "Prof. Parag Kumar Deka"
+                }
+              ],
+              "abstract": "Capital Adequacy plays a pivotal role in ensuring the stability and operational resilience of Regional Rural Banks (RRBs) like Assam Gramin Vikash Bank. As these banks primarily serve financially vulnerable rural populations, maintaining adequate capital buffers becomes crucial to absorb potential losses from agricultural loan defaults or economic shocks. So, this study provides a comprehensive analysis of capital adequacy as a key indicator of financial health in AGVB. The study systematically assesses important financial metrics, such as the Capital Adequacy Ratio (CAR), its Tier I and Tier II components, and risk-weighted assets, using a ten-year period (2011–2021). The results shows that AGVB's financial health has gotten worse, with CAR falling from 10.73% in 2011–12 to 2.09% by 2020–21. The findings highlight how urgently regulatory action is required to protect the stability of regional rural banks, including increased risk management and capital infusion."
+            }
+          },
+          {
+            "verdict": "IRRELEVANT",
+            "justification": "The paper examines the effect of CAR on Return on Assets (ROA), not on regional reputation, making it irrelevant to the claim about bank capital adequacy ratio negatively affecting bank regional reputation.",
+            "paper": {
+              "paperId": "25869b12b0835a3ef699c206850b5048a746c130",
+              "externalIds": {
+                "DOI": "10.35384/jamie.v3i1.780",
+                "CorpusId": 281014454
+              },
+              "title": "ANALISIS PENGARUH CAPITAL ADEQUACY RATIO (CAR), LOAN TO FUNDING RATIO (LFR) DAN BEBAN OPERASIONAL PADA PENDAPATAN OPERASIONAL (BOPO) TERHADAP RETURN ON ASSET (ROA) PADA BANK PEMBANGUNAN DAERAH",
+              "year": 2025,
+              "citationCount": 0,
+              "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.35384/jamie.v3i1.780?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.35384/jamie.v3i1.780, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+              },
+              "authors": [
+                {
+                  "authorId": "2378365094",
+                  "name": "Millen Aanisa Insani Sanra Edison"
+                },
+                {
+                  "authorId": "81357166",
+                  "name": "M. Muchlis"
+                }
+              ],
+              "abstract": "The purpose of this study was to determine the effect of Capital Adequacy Ratio (CAR), Loan to Funding Ratio (LFR) and Operational Expenses on Operational Income (BOPO) on Return On Assets (ROA) at Regional Development Banks. Purposive Sampling was chosen as the sampling method in this study. The population in this study were 26 regional development banks in Indonesia for the 2014-2019 period. The method in this research uses multiple linear regression analysis method with a significance level of 5%. The hypothesis in this study is based on previous research and various other supporting theories that are processed using Eviews-9. The results of this study indicate that the bank's Capital Adequacy Ratio (CAR) has no effect on the Return on Assets (ROA) for the Regional Development Bank industry, the bank's Loan to Funding Ratio (LFR) has no effect on the Return On Asset (ROA) for the Regional Development Bank industry Operational Costs to Operational Income (BOPO) of banks have a significant effect with a negative relationship to Return On Assets (ROA) for the Regional Development Bank industry."
+            }
+          }
+        ],
+        "reviewed_at": "2026-05-29T02:55:35.597452+00:00",
+        "method": "semantic_scholar_llm"
+      },
+      "confidence_tier": 1
+    }
+  ]
+}

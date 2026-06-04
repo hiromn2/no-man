@@ -1,0 +1,273 @@
+{
+  "nodes": [
+    {
+      "id": "bank_loan_volume",
+      "name_en": "Bank loan volume",
+      "name_ja": "銀行貸出量",
+      "category": "financial",
+      "welfare_relevant": false,
+      "description_en": "Total outstanding lending volume of the regional bank across all borrower segments",
+      "description_ja": "地域銀行の全借り手セグメントを対象とした総貸出残高"
+    },
+    {
+      "id": "bank_capital_ratio",
+      "name_en": "Bank capital adequacy ratio",
+      "name_ja": "銀行自己資本比率",
+      "category": "financial",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Risk-based capital adequacy ratio (BIS ratio) of the regional bank; regulatory minimum is 4% for domestic banks",
+      "description_ja": "地域銀行のリスクベース自己資本比率（BIS比率）；国内基準行の最低基準は4%"
+    },
+    {
+      "id": "bank_net_interest_margin",
+      "name_en": "Bank net interest margin",
+      "name_ja": "銀行純利鞘",
+      "category": "financial",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Difference between interest income on loans and interest expense on deposits, expressed as a percentage of earning assets",
+      "description_ja": "貸出金利息と預金利息の差額（運用資産に対するパーセンテージ）"
+    },
+    {
+      "id": "bank_npl_ratio",
+      "name_en": "Bank non-performing loan ratio",
+      "name_ja": "銀行不良債権比率",
+      "category": "financial",
+      "welfare_relevant": true,
+      "welfare_direction": "positive",
+      "description_en": "Ratio of non-performing loans (risk-managed loans per FSA classification) to total loan outstanding",
+      "description_ja": "リスク管理債権（金融庁分類に基づく要管理先以下）の貸出総残高に対する比率"
+    },
+    {
+      "id": "bank_fee_income",
+      "name_en": "Bank fee and commission income",
+      "name_ja": "銀行役務取引等収益",
+      "category": "financial",
+      "welfare_relevant": false,
+      "description_en": "Non-interest income from fees, commissions, and services such as fund distribution, insurance agency, and settlement services",
+      "description_ja": "投資信託・保険代理、決済サービス等の役務取引等に由来する非金利収益"
+    },
+    {
+      "id": "bank_operating_cost_ratio",
+      "name_en": "Bank operating cost ratio (OHR)",
+      "name_ja": "銀行経費率（OHR）",
+      "category": "financial",
+      "welfare_relevant": true,
+      "welfare_direction": "positive",
+      "description_en": "Overhead ratio: total operating expenses divided by gross operating profit; a measure of operational efficiency",
+      "description_ja": "経費率：営業経費総額を業務粗利益で除した比率；運営効率の指標"
+    },
+    {
+      "id": "local_deposit_base",
+      "name_en": "Local deposit base",
+      "name_ja": "地域預金基盤",
+      "category": "financial",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Total deposits held by regional households and businesses at the bank; primary funding source and indicator of community financial engagement",
+      "description_ja": "地域の家計・企業が銀行に預け入れた預金総額；主要な資金調達源であり地域金融関与の指標"
+    },
+    {
+      "id": "bank_securities_portfolio",
+      "name_en": "Bank securities portfolio",
+      "name_ja": "銀行有価証券ポートフォリオ",
+      "category": "financial",
+      "welfare_relevant": false,
+      "description_en": "Holdings of Japanese government bonds (JGBs), local government bonds, and equities; significant balance sheet component for Japanese regional banks",
+      "description_ja": "国債・地方債・株式等の有価証券保有；日本の地域銀行の貸借対照表の重要な構成要素"
+    },
+    {
+      "id": "regional_sme_credit_access",
+      "name_en": "Regional SME credit access",
+      "name_ja": "地域中小企業の信用アクセス",
+      "category": "real_economy",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Availability and ease of bank credit for small and medium-sized enterprises in the region; proxied by loan approval rates and credit terms for SMEs",
+      "description_ja": "地域の中小企業に対する銀行信用の利用可能性と容易さ；中小企業向け融資承認率や融資条件で代理される"
+    },
+    {
+      "id": "regional_employment",
+      "name_en": "Regional employment",
+      "name_ja": "地域雇用",
+      "category": "real_economy",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Total employment level in the region, including employees at SMEs, large firms, and public sector; key welfare indicator for the regional economy",
+      "description_ja": "中小企業・大企業・公共部門を含む地域の総雇用水準；地域経済の主要な厚生指標"
+    },
+    {
+      "id": "regional_gdp",
+      "name_en": "Regional GDP",
+      "name_ja": "地域GDP",
+      "category": "real_economy",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Gross domestic product (or gross prefectural product) of the region; aggregate measure of regional economic output and living standards",
+      "description_ja": "地域の国内総生産（または県内総生産）；地域の経済産出量と生活水準の総合指標"
+    },
+    {
+      "id": "regional_sme_investment",
+      "name_en": "Regional SME capital investment",
+      "name_ja": "地域中小企業の設備投資",
+      "category": "real_economy",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Capital expenditure by SMEs in the region on equipment, facilities, and technology; driver of productivity and employment",
+      "description_ja": "地域の中小企業による設備・施設・技術への資本支出；生産性と雇用の牽引力"
+    },
+    {
+      "id": "regional_housing_market",
+      "name_en": "Regional housing market activity",
+      "name_ja": "地域住宅市場の活況",
+      "category": "real_economy",
+      "welfare_relevant": false,
+      "description_en": "Level of residential construction, transactions, and price activity in the regional housing market; reflects both investment demand and population dynamics",
+      "description_ja": "地域住宅市場における住宅着工・取引・価格の水準；投資需要と人口動態の両方を反映"
+    },
+    {
+      "id": "local_government_fiscal_health",
+      "name_en": "Local government fiscal health",
+      "name_ja": "地方自治体の財政健全性",
+      "category": "real_economy",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Fiscal condition of prefectural and municipal governments; determines capacity to fund public services, infrastructure, and social welfare programs",
+      "description_ja": "都道府県・市区町村の財政状況；公共サービス・インフラ・社会福祉プログラムの財源能力を決定"
+    },
+    {
+      "id": "main_bank_relationship_trust",
+      "name_en": "Main bank relationship trust",
+      "name_ja": "メインバンク関係の信頼",
+      "category": "institutional",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Depth of trust and commitment in the main bank relationship between the regional bank and its borrowers; includes implicit guarantees and information-sharing norms",
+      "description_ja": "地域銀行と借り手間のメインバンク関係における信頼と関与の深さ；暗黙の保証と情報共有規範を含む"
+    },
+    {
+      "id": "bank_branch_network",
+      "name_en": "Bank branch network",
+      "name_ja": "銀行支店ネットワーク",
+      "category": "institutional",
+      "welfare_relevant": false,
+      "description_en": "Physical footprint of the bank in the region: number of branches, ATMs, and relationship management officers; determines soft-information gathering capacity",
+      "description_ja": "地域における銀行の物理的拠点：支店数・ATM・リレーションシップマネージャー；ソフト情報収集能力を決定"
+    },
+    {
+      "id": "regional_credit_market_competition",
+      "name_en": "Regional credit market competition",
+      "name_ja": "地域信用市場の競争",
+      "category": "institutional",
+      "welfare_relevant": false,
+      "description_en": "Intensity of competition in the regional lending market from other banks, shinkin, credit unions, and non-bank financial institutions",
+      "description_ja": "他の銀行・信用金庫・信用組合・ノンバンク等からの地域貸出市場における競争の激しさ"
+    },
+    {
+      "id": "bank_governance_quality",
+      "name_en": "Bank governance quality",
+      "name_ja": "銀行ガバナンスの質",
+      "category": "institutional",
+      "welfare_relevant": false,
+      "description_en": "Quality of internal governance including board independence, risk management frameworks, internal audit, and management accountability mechanisms",
+      "description_ja": "取締役会の独立性・リスク管理体制・内部監査・経営者説明責任を含む内部ガバナンスの質"
+    },
+    {
+      "id": "borrower_confidence",
+      "name_en": "Borrower business confidence",
+      "name_ja": "借り手企業の景況感",
+      "category": "behavioral",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Confidence of regional businesses in the economic outlook and their willingness to invest and hire; shaped in part by the reliability of bank credit relationships",
+      "description_ja": "地域企業の経済見通しへの信頼感と投資・採用意欲；銀行信用関係の信頼性に一部形成される"
+    },
+    {
+      "id": "depositor_confidence",
+      "name_en": "Depositor confidence",
+      "name_ja": "預金者の信頼",
+      "category": "behavioral",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Confidence of regional households and businesses in the safety and reliability of the bank; affects deposit retention and community financial participation",
+      "description_ja": "地域の家計・企業の銀行の安全性と信頼性への信頼感；預金保持と地域金融参加に影響"
+    },
+    {
+      "id": "regional_entrepreneur_activity",
+      "name_en": "Regional entrepreneurial activity",
+      "name_ja": "地域の起業活動",
+      "category": "behavioral",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Rate of new business formation and entrepreneurial investment in the region; depends on credit availability and business confidence",
+      "description_ja": "地域における新規事業創出と起業家投資の水準；信用の利用可能性と企業家精神に依存"
+    },
+    {
+      "id": "bank_reputation_regional",
+      "name_en": "Bank regional reputation",
+      "name_ja": "銀行の地域評判",
+      "category": "behavioral",
+      "welfare_relevant": true,
+      "welfare_direction": "negative",
+      "description_en": "Perceived trustworthiness and standing of the bank among regional households, businesses, and local governments; affects deposit retention and borrower relationships",
+      "description_ja": "地域の家計・企業・地方自治体における銀行の信頼性と評価；預金保持と借り手関係に影響"
+    },
+    {
+      "id": "fsa_supervisory_scrutiny",
+      "name_en": "FSA supervisory scrutiny",
+      "name_ja": "金融庁の監督審査",
+      "category": "regulatory",
+      "welfare_relevant": true,
+      "welfare_direction": "positive",
+      "description_en": "Intensity of Financial Services Agency examination, monitoring, and administrative guidance (gyosei shido); includes both formal examination and informal moral suasion",
+      "description_ja": "金融庁による検査・モニタリング・行政指導の強度；正式な検査と非公式な行政指導（行政指導）の両方を含む"
+    },
+    {
+      "id": "bank_regulatory_capital_pressure",
+      "name_en": "Bank regulatory capital pressure",
+      "name_ja": "銀行への規制資本圧力",
+      "category": "regulatory",
+      "welfare_relevant": true,
+      "welfare_direction": "positive",
+      "description_en": "Pressure from FSA supervision on the bank to raise capital ratios or reduce risk-weighted assets; may be formal (written guidance) or informal (supervisory expectations)",
+      "description_ja": "自己資本比率引き上げやリスク加重資産削減に関する金融庁の監督圧力；公式（書面指導）または非公式（監督当局の期待）"
+    },
+    {
+      "id": "basel_compliance_burden",
+      "name_en": "Basel regulatory compliance burden",
+      "name_ja": "バーゼル規制遵守負担",
+      "category": "regulatory",
+      "welfare_relevant": false,
+      "description_en": "Operational and financial burden of complying with Basel III/IV capital, liquidity, and reporting requirements; disproportionately large for smaller regional banks",
+      "description_ja": "バーゼルIII/IV規制の自己資本・流動性・報告要件への対応に係る業務・財務負担；規模の小さい地域銀行に相対的に大きい"
+    },
+    {
+      "id": "fsa_prompt_corrective_action_risk",
+      "name_en": "FSA prompt corrective action risk",
+      "name_ja": "金融庁早期是正措置リスク",
+      "category": "regulatory",
+      "welfare_relevant": false,
+      "description_en": "Risk of the FSA imposing prompt corrective action (PCA) including business improvement orders, dividend restrictions, or license conditions due to capital inadequacy",
+      "description_ja": "自己資本不足により、金融庁が業務改善命令・配当制限・免許条件等の早期是正措置を課すリスク"
+    },
+    {
+      "id": "regional_population_trend",
+      "name_en": "Regional population trend",
+      "name_ja": "地域人口動態",
+      "category": "macro",
+      "welfare_relevant": false,
+      "description_en": "Trajectory of the regional population driven by birth rates, death rates, and net migration; most Japanese regions face secular decline amplified by youth outmigration to urban centers",
+      "description_ja": "出生率・死亡率・純移動率による地域人口の軌跡；多くの日本の地域では若者の都市圏流出に伴う長期的な人口減少に直面"
+    },
+    {
+      "id": "boj_policy_rate",
+      "name_en": "Bank of Japan policy rate",
+      "name_ja": "日本銀行政策金利",
+      "category": "macro",
+      "welfare_relevant": false,
+      "description_en": "Bank of Japan short-term policy interest rate (uncollateralized overnight call rate target); following decades of ZIRP/NIRP, rate normalization began in 2024",
+      "description_ja": "日本銀行の短期政策金利（無担保コール翌日物レートの誘導目標）；ZIRP/NIRPの数十年後、2024年に金利正常化が開始"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+% noman_report.tex — No-Man causal risk report LaTeX template
+% Requires: XeLaTeX, tcolorbox (most), tikz, xeCJK, fontspec, enumitem
+% Variables are substituted via \VAR{name} string replacement in noman_latex.py.
+\documentclass[a4paper,11pt]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont{Hiragino Mincho ProN}
+\setCJKsansfont{Hiragino Sans}
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+\usepackage{xcolor}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% ── Confidence tier colours ────────────────────────────────────────────────────
+\definecolor{tierwell}{RGB}{34,139,34}
+\definecolor{tierplausible}{RGB}{30,100,200}
+\definecolor{tierworth}{RGB}{190,110,0}
+\definecolor{tiernone}{RGB}{120,120,120}
+
+% ── Severity badge colours ─────────────────────────────────────────────────────
+\definecolor{sevhigh}{RGB}{180,30,30}
+\definecolor{sevmedium}{RGB}{190,110,0}
+\definecolor{sevlow}{RGB}{60,130,60}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small No-Man 因果リスク分析}
+\lhead{\small \VAR{decision_label}}
+\cfoot{\thepage}
+
+\begin{document}
+
+% ── Dashboard strip ───────────────────────────────────────────────────────────
+\begin{tcolorbox}[
+  enhanced,
+  colback=gray!10,
+  colframe=gray!55,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries\large,
+  title={No-Man\quad 因果リスク分析レポート},
+]
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{5.5cm}p{8cm}@{}}
+  \textbf{意思決定タイプ}       & \VAR{decision_label}  \\
+  \textbf{生成日}               & \VAR{report_date}     \\
+  \textbf{検出連鎖数}           & \VAR{chain_count}     \\
+  \textbf{グラフバージョン}     & \VAR{graph_version}   \\
+  \textbf{プロモーションモード} & \VAR{promotion_mode}  \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.7em}
+
+% ── Executive summary ─────────────────────────────────────────────────────────
+\begin{tcolorbox}[
+  enhanced,
+  colback=gray!4,
+  colframe=gray!40,
+  boxrule=0.5pt,
+  arc=4pt,
+  fonttitle=\bfseries,
+  title={経営陣向けサマリー},
+]
+\VAR{executive_summary}
+\end{tcolorbox}
+
+\vspace{0.7em}
+
+% ── Causal chain DAG ─────────────────────────────────────────────────────────
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,
+  colframe=gray!40,
+  boxrule=0.5pt,
+  arc=4pt,
+  fonttitle=\bfseries,
+  title={因果連鎖グラフ（全連鎖）},
+]
+\begin{center}
+\resizebox{\linewidth}{!}{%
+\VAR{tikz_dag}
+}
+\end{center}
+\begin{center}
+{\small \textcolor{blue}{$\rightarrow$} 正の効果\quad \textcolor{red}{$\rightarrow$} 負の効果}
+\end{center}
+\end{tcolorbox}
+
+\clearpage
+
+% ── Chain detail blocks ───────────────────────────────────────────────────────
+\section*{詳細分析}
+
+\VAR{chain_blocks}
+
+\end{document}
